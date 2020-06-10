@@ -3,7 +3,15 @@ import 'package:flutter/material.dart';
 import '../widgets/NameInfo.dart';
 import '../widgets/InfoBox.dart';
 
-class MeInfo extends StatelessWidget {
+class MeInfo extends StatefulWidget {
+  @override
+  _MeInfoState createState() => _MeInfoState();
+}
+
+class _MeInfoState extends State<MeInfo> {
+  bool showphone = false;
+  bool showemail = false;
+  bool showwork = false;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,22 +32,42 @@ class MeInfo extends StatelessWidget {
                 height: 25,
               ),
               InfoBox(
-                imageIcon: Icons.phone,
-                label: "01752836632",
+                onPress: () {
+                  setState(() {
+                    showphone = !showphone;
+                  });
+                },
+                imageIcon: showphone ? Icons.phone : null,
+                label:
+                    showphone ? "01752836632" : "Want To See My Phone Number?",
               ),
               SizedBox(
                 height: 20,
               ),
               InfoBox(
-                imageIcon: Icons.email,
-                label: "niloysaha.887@gmail.com",
+                onPress: () {
+                  setState(() {
+                    showemail = !showemail;
+                  });
+                },
+                imageIcon: showemail ? Icons.email : null,
+                label: showemail
+                    ? "niloysaha.887@gmail.com"
+                    : 'Want to see my Email?',
               ),
               SizedBox(
                 height: 20,
               ),
               InfoBox(
-                imageIcon: Icons.work,
-                label: "North South University",
+                onPress: () {
+                  setState(() {
+                    showwork = !showwork;
+                  });
+                },
+                imageIcon: showwork ? Icons.work : null,
+                label: showwork
+                    ? "North South University"
+                    : "Want to see my institution?",
               ),
               SizedBox(
                 width: double.infinity,
